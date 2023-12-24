@@ -5,10 +5,13 @@ import { Mutation } from "./resolvers/mutation.ts";
 import { typeDefs } from "./gql/schema.ts";
 import montoose from "mongoose";
 
-
+const MONGO_URL = Deno.env.get("MONGO_URL");
+if (!MONGO_URL) {
+  throw new Error("Please provide a MongoDB connection string");
+}
 
 // Connect to MongoDB
-await montoose.connect(mongodb+srv://carlos:abcd1234@cluster0.yo8xrhk.mongodb.net/?retryWrites=true&w=majority);
+await montoose.connect(MONGO_URL);
 
 const server = new ApolloServer({
   typeDefs,
