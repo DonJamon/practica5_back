@@ -8,7 +8,7 @@ import montoose from "mongoose";
 
 
 // Connect to MongoDB
-await montoose.connect(MONGO_URL);
+await montoose.connect(mongodb+srv://carlos:abcd1234@cluster0.yo8xrhk.mongodb.net/?retryWrites=true&w=majority);
 
 const server = new ApolloServer({
   typeDefs,
